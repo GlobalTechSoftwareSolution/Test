@@ -179,12 +179,9 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 import dj_database_url
 import os
 
+import dj_database_url
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.getenv("DATABASE_URL"),  # must be set in Render env
-        conn_max_age=600,
-        ssl_require=True
-    )
+    "default": dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 AUTH_PASSWORD_VALIDATORS = []
