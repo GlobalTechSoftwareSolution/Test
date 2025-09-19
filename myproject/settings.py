@@ -124,6 +124,8 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv  # ✅ add this
+import dj_database_url
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -153,6 +155,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
 
 ROOT_URLCONF = "myproject.urls"
@@ -176,14 +179,9 @@ TEMPLATES = [
 WSGI_APPLICATION = "myproject.wsgi.application"
 
 # ✅ Supabase PostgreSQL DB
-import dj_database_url
-import os
-
-import dj_database_url
 DATABASES = {
-    "default": dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.parse(config('DATABASE_URL'))
 }
-
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = "en-us"
