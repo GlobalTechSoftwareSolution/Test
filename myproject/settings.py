@@ -135,7 +135,7 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret-key")
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['https://test-gaut.onrender.com', 'test-gaut.onrender.com']
 
 INSTALLED_APPS = [
     "django.contrib.admin",
